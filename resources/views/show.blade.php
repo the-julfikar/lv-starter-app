@@ -7,7 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+   
+    <!--
+    <style>
+        .w-5{
+            display: none
+        }
+    </style>
+    -->
     <title>StarterApp-Show</title>
   </head>
   <body>
@@ -68,36 +75,42 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
-            <h1><center><p class="font-weight-light">Results</p></center></h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Passwd</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Dept.</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Jobs</th>
-                        <th scope="col">Sex</th>
-                    </tr>
-                </thead>
+                <h1><center><p class="font-weight-light">Results</p></center></h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Passwd</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Dept.</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Jobs</th>
+                            <th scope="col">Sex</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                @foreach($ls as $l)
-                    <tr>
-                        <th scope="row">{{ $l['id'] }}</th>
-                        <td>{{ $l['fullname'] }}</td>
-                        <td>{{ $l['passwd'] }}</td>
-                        <td>{{ $l['email'] }}</td>
-                        <td>{{ $l['dept'] }}</td>
-                        <td>{{ $l['address'] }}</td>
-                        <td>{{ $l['jobs'] }}</td>
-                        <td>{{ $l['sex'] }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    <tbody>
+                    @foreach($data as $l)
+                        <tr>
+                            <th scope="row">{{ $l['id'] }}</th>
+                            <td>{{ $l['fullname'] }}</td>
+                            <td>{{ $l['passwd'] }}</td>
+                            <td>{{ $l['email'] }}</td>
+                            <td>{{ $l['dept'] }}</td>
+                            <td>{{ $l['address'] }}</td>
+                            <td>{{ $l['jobs'] }}</td>
+                            <td>{{ $l['sex'] }}</td>
+                            <!-- <td>{{ $l->sex }}</td> -->
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                
+                {{-- Pagination --}}
+                <div class="d-flex justify-content-center"> <!-- style="margin-bottom: 40px auto" -->
+                    {!! $data->links() !!}
+                </div>
             </div>
             <div class="col-1"></div>
         </div>

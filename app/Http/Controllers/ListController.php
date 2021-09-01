@@ -12,7 +12,9 @@ class ListController extends Controller
     {
         //return user::all();
 
-        $data= user::all();
-        return view('show',['ls'=>$data]);
+        //$data= user::all();
+        $data= user::paginate(4); //For pagination
+        //return view('show',['ls'=>$data]);
+        return view('show',compact('data'));
     }
 }
