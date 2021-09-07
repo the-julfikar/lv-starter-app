@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\blobImg;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::view('icons','icons');
 
 Route::view('navicon','navicon');
 
+Route::view('images','imgs');
+
 //Model - Controllers
 Route::get('show-all',[UserController::class,'getData']);
 
@@ -42,3 +45,5 @@ Route::post('registration',[UserController::class,'addData']);
 Route::get('fetch',[ListController::class,'fetching']);
 
 Route::post('upload_file',[FileController::class,'uploads']);
+
+Route::get('blobs',[blobImg::class,'blob_imgs']);
