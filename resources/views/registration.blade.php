@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <title>lv-app-registration</title>
   </head>
@@ -70,7 +71,7 @@
                 @endphp
             </div>
             @endif
-            
+
             <h1><center><p class="font-weight-light">Registration</p></center></h1>
 
             <form action="registration" method="POST">
@@ -78,16 +79,33 @@
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" class="form-control" id="name" name="fullname">
+                    @if ($errors->has('fullname'))
+                        <span class="text-danger">*{{ $errors->first('fullname') }}</span>
+                    @endif
                 </div>
                 </br>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="passwd">
+                    @if ($errors->has('passwd'))
+                        <span class="text-danger">*{{ $errors->first('passwd') }}</span>
+                    @endif
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email</label>
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+                    @if ($errors->has('email'))
+                        <span class="text-danger">*{{ $errors->first('email') }}</span>
+                        <!--
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                            <div>
+                                {{ $errors->first('email') }}
+                            </div>
+                        </div>
+                        -->
+                    @endif
                 </div>
                 <br>
                 <div class="form-group">

@@ -18,6 +18,21 @@ class UserController extends Controller
     {
          $new_user=new user;
 
+         $request = $req->validate([
+            'fullname' => 'required',
+            'passwd' => 'required|min:3',
+            'email' => 'required|email|unique:users',
+            'dept' => 'required',
+            'address' => 'required|max:100'
+        ], [
+            'fullname.required' => 'FullName is required',
+            'passwd.required' => 'Passwd is required, plz',
+            'email.required' => 'Email format is incorrect | missing'
+        ]);
+
+        //$validatedData['password'] = bcrypt($validatedData['password']);
+        //$usr = user::create($requests); //not working XXX
+
          $new_user->fullname=$req->fullname;
          $new_user->passwd=$req->passwd;
          $new_user->email=$req->email;
@@ -25,7 +40,6 @@ class UserController extends Controller
          $new_user->address=$req->address;
          $new_user->jobs="G";
          $new_user->sex="M";
-
          $new_user->save();
 
          //return $req->input(); //checked the request parameters are coming properly or not.
