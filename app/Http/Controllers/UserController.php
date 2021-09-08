@@ -30,6 +30,8 @@ class UserController extends Controller
 
          //return $req->input(); //checked the request parameters are coming properly or not.
 
-         return redirect('fetch');
+         //return redirect('fetch');
+
+         return back()->with('success', 'Registration is done successfully.');
     }
 }

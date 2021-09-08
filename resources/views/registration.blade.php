@@ -62,7 +62,17 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
+            @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+                @php
+                    Session::forget('success');
+                @endphp
+            </div>
+            @endif
+            
             <h1><center><p class="font-weight-light">Registration</p></center></h1>
+
             <form action="registration" method="POST">
                 @csrf
                 <div class="form-group">
