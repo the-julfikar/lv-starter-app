@@ -37,6 +37,9 @@ Route::view('navicon','navicon');
 
 Route::view('images','imgs');
 
+Route::view('modals','modals');
+Route::view('modals-f','modals-form');
+
 //Model - Controllers
 Route::get('show-all',[UserController::class,'getData']);
 
