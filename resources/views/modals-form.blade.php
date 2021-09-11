@@ -18,7 +18,7 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     
-    <div class="container" style="margin-top: 50px">
+    <div class="container" style="margin-top: 100px">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
@@ -65,8 +65,10 @@
         var exampleModal = document.getElementById('exampleModal')
         exampleModal.addEventListener('show.bs.modal', function (event) {
         // Button that triggered the modal
+        
         var button = event.relatedTarget
         // Extract info from data-bs-* attributes
+
         var recipient = button.getAttribute('data-bs-whatever')
         // If necessary, you could initiate an AJAX request here
         // and then do the updating in a callback.

@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!--
     <style>
         .w-5{
@@ -87,6 +87,8 @@
                             <th scope="col">Address</th>
                             <th scope="col">Jobs</th>
                             <th scope="col">Sex</th>
+                            <th scope="col" style="text-align: center">Edit/Delete</th>
+                            <!-- <th scope="col" style="text-align: center">Delete</th> -->
                         </tr>
                     </thead>
 
@@ -102,6 +104,22 @@
                             <td>{{ $l['jobs'] }}</td>
                             <td>{{ $l['sex'] }}</td>
                             <!-- <td>{{ $l->sex }}</td> -->
+                            <td align="center">
+                                <button type="button" class="btn btn-secondary btn-sm">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-danger btn-sm ml-3">
+                                    <i class="bi bi-scissors"></i>
+                                </button>
+                            </td>
+                            <!--
+                            <td align="center">
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-scissors"></i>
+                                </button>
+                            </td>
+                           -->
                         </tr>
                     @endforeach
                     </tbody>
