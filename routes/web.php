@@ -50,3 +50,7 @@ Route::get('fetch',[ListController::class,'fetching']);
 Route::post('upload_file',[FileController::class,'uploads']);
 
 Route::get('blobs',[blobImg::class,'blob_imgs']);
+
+Route::get('edit/{id}',[ListController::class,'edit']);
+
+Route::get('delete/{id}',[ListController::class,'delete']);

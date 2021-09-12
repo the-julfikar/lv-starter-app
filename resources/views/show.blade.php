@@ -105,21 +105,22 @@
                             <td>{{ $l['sex'] }}</td>
                             <!-- <td>{{ $l->sex }}</td> -->
                             <td align="center">
-                                <button type="button" class="btn btn-secondary btn-sm">
+                                <!-- window.location -->
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='{{ url("edit/" . $l->id) }}'">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
 
+                                <!-- 
                                 <button type="button" class="btn btn-danger btn-sm ml-3">
                                     <i class="bi bi-scissors"></i>
                                 </button>
-                            </td>
-                            <!--
-                            <td align="center">
-                                <button type="button" class="btn btn-danger btn-sm">
+                                -->
+                                
+                                <!-- Adding controller link to the edit/delete button -->
+                                <a href={{ "delete/" . $l->id }} class="btn btn-danger btn-sm ml-3">
                                     <i class="bi bi-scissors"></i>
-                                </button>
+                                </a>
                             </td>
-                           -->
                         </tr>
                     @endforeach
                     </tbody>
