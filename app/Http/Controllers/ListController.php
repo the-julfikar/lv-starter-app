@@ -20,7 +20,24 @@ class ListController extends Controller
 
     function edit($id)
     {
-        return user::find($id);
+        //return user::find($id);
+
+        $info = user::find($id);
+
+        if($info)
+        {
+           return response()->json([
+               'status'=>200,
+               'infos'=>$info
+           ]);  
+        }
+        else
+        {
+            return response()->json([
+                'status'=>404,
+                'msg'=>'INFO_NOT_FOUND'
+            ]);
+        }
     }
 
 
