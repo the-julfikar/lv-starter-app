@@ -62,7 +62,7 @@
     <div class="container" style="margin-top: 80px">
         <div class="row">
             <div class="col-3"></div>
-            <div class="col-6">
+            <div class="col-6 shadow p-4 mb-4 bg-white">
             @if(Session::has('success'))
             <div class="alert alert-success">
                 {{ Session::get('success') }}
