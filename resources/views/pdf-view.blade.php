@@ -29,7 +29,7 @@
                 <h1><p class="font-weight-light">PDF View</p></h1>
 
                 <a href="#" class="btn btn-primary btn-sm ml-3 click_info">
-                    <i class="bi bi-pencil-square"></i>  Open Pdf Jquery
+                    <i class="bi bi-pencil-square"></i>  Open Pdf wJquery
                 </a>
                 
                 <br>
@@ -47,7 +47,7 @@
                 <br>
                 <br>
                  <div id='pdf_views'>
-                    <object data="{{ asset('imgs/NACTAR.pdf') }}" type="application/pdf" width="70%" height="500">
+                    <object data="{{ asset('imgs/NACTAR.pdf') }}" type="application/pdf" width="100%" height="500">
                         <iframe src="https://docs.google.com/viewer?url=imgs/NACTAR.pdf&embedded=true"></iframe> <!-- url=your_url_to_pdf | it uses Google's PDF Viewer to display it as plain HTML if plugin not found: -->
                     </object>
                  </div>

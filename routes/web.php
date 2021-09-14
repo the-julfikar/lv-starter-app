@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\blobImg;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::view('modals-f','modals-form');
 
 Route::view('pdf-view','pdf-view');
 
+Route::view('pdf-download','pdf_downl');
+
 //Model - Controllers
 Route::get('show-all',[UserController::class,'getData']);
 
@@ -56,3 +59,10 @@ Route::get('blobs',[blobImg::class,'blob_imgs']);
 Route::get('edit/{id}',[ListController::class,'edit']);
 
 Route::get('delete/{id}',[ListController::class,'delete']);
+
+Route::get('pdf-downloader',[PdfController::class,'create_list']);
+
+Route::get('pdf-gen',[PdfController::class,'create_pdf']);
+
+Route::get('pdf-gen-sample',[PdfController::class,'gen_pdf_sample']);
+
