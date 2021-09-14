@@ -40,6 +40,8 @@ Route::view('images','imgs');
 Route::view('modals','modals');
 Route::view('modals-f','modals-form');
 
+Route::view('pdf-view','pdf-view');
+
 //Model - Controllers
 Route::get('show-all',[UserController::class,'getData']);
 
