@@ -1,21 +1,36 @@
-<table>
+<style>
+    table, th, td {
+        padding: 5px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<!--
+<img src="{{ asset("/imgs/ruet-hd.png") }}" width="90" height="80" alt="">
+-->
+
+<h1 style="text-align: center">Result of Employee</h1>
+
+<h2 style="text-align: center">ICT Cell</h2>
+
+<table style="margin-top: 20px; margin-left: auto; margin-right: auto;">
     <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Passwd</th>
-            <th scope="col">Email</th>
-            <th scope="col">Dept.</th>
-            <th scope="col">Address</th>
-            <th scope="col">Jobs</th>
-            <th scope="col">Sex</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Passwd</th>
+            <th>Email</th>
+            <th>Dept.</th>
+            <th>Address</th>
+            <th>Jobs</th>
+            <th>Sex</th>
         </tr>
     </thead>
 
     <tbody>
         @foreach($data as $l)
             <tr>
-                <th scope="row">{{ $l['id'] }}</th>
+                <th>{{ $l['id'] }}</th>
                 <td>{{ $l['fullname'] }}</td>
                 <td>{{ $l['passwd'] }}</td>
                 <td>{{ $l['email'] }}</td>
@@ -27,3 +42,5 @@
         @endforeach
     </tbody>
 </table>
+
+

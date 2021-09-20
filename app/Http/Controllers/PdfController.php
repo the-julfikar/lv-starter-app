@@ -23,7 +23,21 @@ class PdfController extends Controller
         
         //$pdf = PDF::loadView('pdf_downl', compact('data'));
 
-        $pdf = PDF::loadView('pdf-print', compact('data'));
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
+                    ->loadView('pdf-print', compact('data'));
+        //$pdf = PDF::loadView('pdf-print', compact('data'));
+
+        /*
+        $pdf->getDomPDF()->setHttpContext(
+            stream_context_create([
+                'ssl' => [
+                    'allow_self_signed'=> TRUE,
+                    'verify_peer' => FALSE,
+                    'verify_peer_name' => FALSE,
+                ]
+            ])
+        );
+        */
     
         return $pdf->download('ict_cell_list.pdf');
     }
