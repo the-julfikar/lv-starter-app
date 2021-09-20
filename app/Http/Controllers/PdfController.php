@@ -13,7 +13,13 @@ class PdfController extends Controller
     {
         $data= user::all();
         //return view('pdf_downl',compact('data'));
-        return view('pdf-print',compact('data'));
+
+        $path=public_path('ruet-hd.png');
+        $type=pathinfo($path,PATHINFO_EXTENSION);
+        $data_=file_get_contents($path);
+        $pic='data:image/'. $type . ';base64,' . base64_encode($data_);
+        
+        return view('pdf-print',compact('data','pic'));
 
     }
 
@@ -22,10 +28,6 @@ class PdfController extends Controller
         $data= user::all();
         
         //$pdf = PDF::loadView('pdf_downl', compact('data'));
-
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-                    ->loadView('pdf-print', compact('data'));
-        //$pdf = PDF::loadView('pdf-print', compact('data'));
 
         /*
         $pdf->getDomPDF()->setHttpContext(
@@ -38,8 +40,20 @@ class PdfController extends Controller
             ])
         );
         */
+
+        $path=public_path('ruet-hd.png');
+        $type=pathinfo($path,PATHINFO_EXTENSION);
+        $data_=file_get_contents($path);
+        $pic='data:image/'. $type . ';base64,' . base64_encode($data_);
+
+        //$info['img']=$pic;
+        //$info['ls']=$data;
+
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]) ->loadView('pdf-print', compact('pic','data'));
+
     
-        return $pdf->download('ict_cell_list.pdf');
+        //return $pdf->download('ict_cell_list.pdf');
+        return $pdf->stream('ict_cell_list.pdf');
     }
 
     public function gen_pdf_sample()

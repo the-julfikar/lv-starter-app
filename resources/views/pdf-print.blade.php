@@ -7,11 +7,19 @@
 </style>
 <!--
 <img src="{{ asset("/imgs/ruet-hd.png") }}" width="90" height="80" alt="">
+
+<img src="{{ asset('imgs/ruet.jpg') }}" style="height: 80px; width: 80px; display: block; margin-left: auto; margin-right: auto;" alt="">
 -->
+
+
+<center>
+    <img src="<?php echo $pic ?>" style="height: 80px; width: 80px;" alt="">
+</center>
 
 <h1 style="text-align: center">Result of Employee</h1>
 
 <h2 style="text-align: center">ICT Cell</h2>
+
 
 <table style="margin-top: 20px; margin-left: auto; margin-right: auto;">
     <thead>
@@ -42,5 +50,3 @@
         @endforeach
     </tbody>
 </table>
-
-
