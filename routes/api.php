@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\lv_api;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('data',[lv_api::class,'data']);
+
+Route::get('ls',[lv_api::class,'list']);
+
+Route::post('entry',[lv_api::class,'add']);
+
+Route::put('modify',[lv_api::class,'modify']);
