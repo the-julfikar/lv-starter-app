@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\user;
+use App\Models\UserMod;
 
 class UserController extends Controller
 {
@@ -11,12 +11,12 @@ class UserController extends Controller
 
     function getData()
     {
-        return user::all();
+        return UserMod::all();
     }
 
     function addData(Request $req)
     {
-         $new_user=new user;
+         $new_user=new UserMod;
 
          $request = $req->validate([
             'fullname' => 'required',
@@ -31,7 +31,7 @@ class UserController extends Controller
         ]);
 
         //$validatedData['password'] = bcrypt($validatedData['password']);
-        //$usr = user::create($requests); //not working XXX
+        //$usr = UserMod::create($requests); //not working XXX
 
          $new_user->fullname=$req->fullname;
          $new_user->passwd=$req->passwd;

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\user;
+use App\Models\UserMod;
+use Validator;
 
 class lv_api extends Controller
 {
@@ -16,14 +17,14 @@ class lv_api extends Controller
 
     public function list()
     {
-        return user::all();
+        return UserMod::all();
     }
 
     public function add(Request $req)
     {
         //return $req;
 
-        $new_user=new user;
+        $new_user=new UserMod;
 
         $new_user->fullname=$req->fullname;
         $new_user->passwd=$req->passwd;
@@ -49,9 +50,9 @@ class lv_api extends Controller
     {
         //return $req;
 
-        //return user::find($req->id);
+        //return UserMod::find($req->id);
 
-        $info_user = user::find($req->id);
+        $info_user = UserMod::find($req->id);
         
         $info_user->fullname=$req->fullname;
         $info_user->address=$req->address;
@@ -67,5 +68,52 @@ class lv_api extends Controller
             return ["status"=>"failed","result"=>"Operation is failed."];
         }
         
+    }
+
+
+    public function minus($id)
+    {
+        $info_user = UserMod::find($id);
+
+        $result=$info_user->delete();
+
+        if($result)
+        {
+            return ["status"=>"success","result"=>"Record is updated successfully - ".$id];
+        }
+        else
+        {
+            return ["status"=>"failed","result"=>"Operation is failed."];
+        }
+        
+    }
+
+    public function search($condition)
+    {
+        //return UserMod::where("dept",$condition)->get();
+
+        return UserMod::where("fullname","like","%".$condition."%")->get();
+    }
+
+    public function validity(Request $reqt)
+    {
+        $rules_=array(
+            "fullname" => "required",
+            "dept" => "required|min:2|max:4",
+        );
+
+        $validator=Validator::make($reqt->all(),$rules_);
+
+        if($validator->fails())
+        {
+            //return $validator->errors();
+            
+            return response()->json($validator->errors(),401);
+        }
+        else
+        {
+            //Saving Data => add
+            return ["status"=>"success","msg"=>"Validation is successful. :)"];
+        }
     }
 }

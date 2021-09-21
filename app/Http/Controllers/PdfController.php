@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PDF;
-use App\Models\user;
+use App\Models\UserMod;
 
 class PdfController extends Controller
 {
     //
     public function create_list()
     {
-        $data= user::all();
+        $data= UserMod::all();
         //return view('pdf_downl',compact('data'));
 
         $path=public_path('ruet-hd.png');
@@ -25,7 +25,7 @@ class PdfController extends Controller
 
     public function create_pdf()
     {
-        $data= user::all();
+        $data= UserMod::all();
         
         //$pdf = PDF::loadView('pdf_downl', compact('data'));
 
