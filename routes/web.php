@@ -45,6 +45,8 @@ Route::view('pdf-view','pdf-view');
 
 Route::view('pdf-download','pdf_downl');
 
+Route::view('boots-tabs','tabs');
+
 //Model - Controllers
 Route::get('show-all',[UserController::class,'getData']);
 
