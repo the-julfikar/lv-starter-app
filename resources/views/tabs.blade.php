@@ -62,7 +62,7 @@
             <div class="col-2"></div>
             <div class="col-8 shadow p-4 mb-4 bg-white">
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
                     </li>
