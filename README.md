@@ -225,6 +225,21 @@ php artisan passport:install
 */
 ```
 
+- config:
+
+```php
+// app > Models > User.php
+
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens,Notifiable; // *inlcude HasApiTokens
+    
+    ...
+}
+```
+
 - other stuffs:
 
 ```php
@@ -234,6 +249,7 @@ use Laravel\Passport\Passport;
 
 public function boot()
 {
+    ...
     Passport::routes();
 
     Passport::tokensExpireIn(now()->addDays(15));
@@ -249,7 +265,7 @@ public function boot()
         ...
         'api' => [
             'driver' => 'passport',
-			'provider' => 'users',
+            'provider' => 'users',
         ],
   ]
 ```
