@@ -112,34 +112,96 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens,Notifiable; // *inlcude HasApiTokens
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
+```
+
+- Create the seeder for the User Model
+```bash
+php artisan make:seeder UsersTableSeeder
+```
+
+- Insert the records
+```php
+// database/seeders/UsersTableSeeder.php
+...
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class UsersTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // run the script under *run function
+        DB::table('users')->insert([
+            'name' => 'Md. Julfikar Islam Khan',
+            'email' => 'julfikar.islam.khan@gmail.com',
+            'password' => Hash::make('password')
+        ]);
+    }
+}
+```
+
+- Run the db seeder
+```bash
+php artisan db:seed --class=UsersTableSeeder
+```
+
+- Create login controller : UserLoginController
+
+```php
+...
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class UserLoginController extends Controller
+{
+    //
+    function index(Request $request)
+    {
+        $user= User::where("email", $request->email)->first();
+
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response([
+                    'message' => ['These credentials do not match our records.']
+                ], 404);
+            }
+        
+             $token = $user->createToken('my-app-token')->plainTextToken;
+        
+            $response = [
+                'user' => $user,
+                'token' => $token
+            ];
+        
+             return response($response, 201);
+    }
+}
+```
+- Creating the *routes*
+
+```php
+// routes > api.php
+
+Route::post("login",[UserLoginController::class,'index']);
+
+// *POSTMAN : http://127.0.0.1:8000/api/login
+```
+
+- *Make the routes more secure*
+```php
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    //All secure URL's
+
+    Route::get("get_data",[DemoController::class,'demo']);
+
+    });
+
+// *POSTMAN > Headers > [Authorization : Bearer token....]
 ```
 
 ### api with Passport [VVI]
