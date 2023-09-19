@@ -102,29 +102,8 @@ protected $middlewareGroups = [
         ],
     ];
 ```
-
-### api with Passport [VVI]
-
-- Installation
-
-```bash
-composer require laravel/passport
-php artisan migrate
-php artisan passport:install
-```
-```php
-/*
-	Encryption keys generated successfully.
-	Personal access client created successfully.
-	Client ID: 1
-	Client secret: tf7YIKSHUYGdxUDYJpS7cvDzMGRp6M1l6CKQW34Y
-	Password grant client created successfully.
-	Client ID: 2
-	Client secret: 6eaxU8Z42oZwmwUyV93zAISCQ0PGHynW0fPtrh4H
-*/
-```
-
 - config:
+
 ```php
 // app > Models > User.php
 
@@ -161,6 +140,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+```
+
+### api with Passport [VVI]
+
+- Installation
+
+```bash
+composer require laravel/passport
+php artisan migrate
+php artisan passport:install
+```
+```php
+/*
+	Encryption keys generated successfully.
+	Personal access client created successfully.
+	Client ID: 1
+	Client secret: tf7YIKSHUYGdxUDYJpS7cvDzMGRp6M1l6CKQW34Y
+	Password grant client created successfully.
+	Client ID: 2
+	Client secret: 6eaxU8Z42oZwmwUyV93zAISCQ0PGHynW0fPtrh4H
+*/
 ```
 
 - other stuffs:
