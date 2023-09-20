@@ -269,3 +269,8 @@ public function boot()
         ],
   ]
 ```
+
+### Api with passport
+
+*The complete codebase-instructions are written down here :* [laravel-sanctum](https://github.com/the-julfikar/lv-passport-api)
+
